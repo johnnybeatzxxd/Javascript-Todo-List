@@ -2,6 +2,7 @@ const itemsList = document.getElementById("items-list");
 let items = ["code", "sleep", "eat", "cry"];
 
 function render() {
+    itemsList.innerHTML = null;
     for (let [idx, item] of Object.entries(items)) {
         const container = document.createElement("div");
         container.style.marginBottom = "5px";
@@ -19,6 +20,7 @@ function render() {
         deleteButton.style.display = "inline";
         deleteButton.onclick = () => {
             console.log(`${idx} clicked`)
+            deleteItem(idx)
         }
 
         container.appendChild(text);
@@ -26,4 +28,11 @@ function render() {
         itemsList.appendChild(container);
     }
 }
+
 render()
+
+function deleteItem(idx) {
+    items.splice(idx, 1);
+    render()
+    console.log(items);
+}
