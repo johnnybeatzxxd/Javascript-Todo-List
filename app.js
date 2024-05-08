@@ -1,5 +1,20 @@
 const itemsList = document.getElementById("items-list");
+const addItemButton = document.getElementById("addTodo");
+const inputField = document.getElementById("todoInput");
+
 let items = ["code", "sleep", "eat", "cry"];
+
+
+
+addItemButton.onclick = () => {
+    var value = inputField.value
+    if (value != "") {
+        items.push(value);
+        inputField.value = "";
+        render()
+
+    }
+}
 
 function render() {
     itemsList.innerHTML = null;
