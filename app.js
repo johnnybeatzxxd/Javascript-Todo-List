@@ -9,8 +9,8 @@ addItemButton.onclick = () => {
     if (value != "") {
         items.push(value);
         inputField.value = "";
-        saveItem(items)
-        render()
+        saveItem(items);
+        render();
 
     }
 }
@@ -43,23 +43,24 @@ function render() {
     }
 }
 
-render()
+
 
 function deleteItem(idx) {
     items.splice(idx, 1);
-    render()
+    saveItem(items);
+    render();
     console.log(items);
 }
 
 function saveItem(items) {
-    items = JSON.stringify(items)
-    let storedItems = localStorage.setItem("items", items)
+    items = JSON.stringify(items);
+    let storedItems = localStorage.setItem("items", items);
 
 
 }
 
 function loadItems() {
     let loadedItems = localStorage.getItem("items");
-    console.log(loadedItems)
-    return loadedItems
+    return loadedItems;
 }
+document.addEventListener("DOMContentLoaded", () => { render() })
